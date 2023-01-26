@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test_if</title>
+</head>
+<body>
+
+<br />
+
+{% if x > 100 %}
+x的值是{{ x }}
+{% else %}
+x的值不够大
+{% endif %}
+
+{% for name in lst %}
+    {% if forloop.first %}***********{% endif %}
+    <p> {{ forloop.revcounter }}{{ name }}</p>
+    {% if forloop.first %}+++++++++++{% endif %}
+{% empty %}
+    当前无数据
+{% endfor %}
+
+</body>
+</html>
