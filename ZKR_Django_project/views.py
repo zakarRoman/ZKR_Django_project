@@ -3,6 +3,8 @@
 # 开发日期: 2023/1/11
 # !/usr/bin/python
 # -*- coding: UTF-8 -*-
+import json
+
 from django.http import HttpResponse, HttpResponseRedirect
 
 POST_FORM = '''
@@ -87,6 +89,7 @@ def get_or_post(request):
         '''处理用户提交的数据'''
         print('uname is', request.POST['uname'])
         print(request.POST)
+
         return HttpResponse('post is ok!')
     else:
         pass
@@ -164,8 +167,28 @@ def test_url(request):
 
 def test_url_result(request, age):
 
-    return HttpResponse('____the test is ok!')
+    # 302跳转
+    from django.urls import reverse
+    url = reverse('base_index')
+    return HttpResponseRedirect(url)
 
+    # return HttpResponse('____the test is ok!')
+
+def test_json(request):
+    dic = {}
+
+    if request.method == "POST":
+        resp = json.loads(request.body)
+        print(resp)
+        username = resp['username']
+        password = resp['password']
+        print(password)
+
+    dic['username'] = username
+    dic['password'] = password
+    print(f"用户名是{username},密码是{password}")
+    json_1 = json.dumps(dic)
+    return HttpResponse(json_1)
 
 
 

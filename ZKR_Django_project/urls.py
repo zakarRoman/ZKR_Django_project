@@ -43,12 +43,13 @@ urlpatterns = [
     path('test_if_for', views.test_if_for),
 
     path('test_calculator', views.test_calculator),
-    # 三个路由对应三个视图
-    path('base_html', views.base_view),
+    # 三个路由对应三个视图，过滤器和继承
+    path('base_html', views.base_view, name='base_index'),
     path('music', views.music_view),
     path('sports', views.sports_view),
-
+    # url反向解析
     path('url', views.test_url),
-    path('urls_result/<int:age>', views.test_url_result, name='us')# 使用了一个path转换器
+    path('urls_result/<int:age>', views.test_url_result, name='us'), # 使用了一个path转换器
+    path('test_json', views.test_json)
 
 ]
