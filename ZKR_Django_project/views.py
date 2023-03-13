@@ -4,6 +4,7 @@
 # !/usr/bin/python
 # -*- coding: UTF-8 -*-
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -174,6 +175,7 @@ def test_url_result(request, age):
 
     # return HttpResponse('____the test is ok!')
 
+@csrf_exempt
 def test_json(request):
     dic = {}
 
@@ -189,6 +191,7 @@ def test_json(request):
     print(f"用户名是{username},密码是{password}")
     json_1 = json.dumps(dic)
     return HttpResponse(json_1)
+
 
 
 
